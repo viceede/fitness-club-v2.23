@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генерация договора</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Генерация договора</h1>
+        <form method="POST" class="mt-4">
+            <!-- Поле: Номер договора -->
+            <div class="mb-3">
+                <label for="contract_number" class="form-label">Номер договора</label>
+                <input type="text" class="form-control" id="contract_number" name="contract_number" placeholder="Введите номер договора" required>
+            </div>
+
+            <!-- Поле: Дата договора -->
+            <div class="mb-3">
+                <label for="contract_date" class="form-label">Дата договора</label>
+                <input type="date" class="form-control" id="contract_date" name="contract_date" required>
+            </div>
+
+            <!-- Поле: Имя клиента -->
+            <div class="mb-3">
+                <label for="client_name" class="form-label">Имя клиента</label>
+                <input type="text" class="form-control" id="client_name" name="client_name" placeholder="Введите имя клиента" required>
+            </div>
+
+            <!-- Поле: Контактные данные клиента -->
+            <div class="mb-3">
+                <label for="client_contact" class="form-label">Контактные данные клиента</label>
+                <input type="text" class="form-control" id="client_contact" name="client_contact" placeholder="Введите контактные данные клиента" required>
+            </div>
+
+            <!-- Поле: Документ клиента -->
+            <div class="mb-3">
+                <label for="client_document" class="form-label">Документ клиента</label>
+                <input type="text" class="form-control" id="client_document" name="client_document" placeholder="Введите документ клиента" required>
+            </div>
+
+            <!-- Поле: Номер клубной карты -->
+            <div class="mb-3">
+                <label for="club_card_number" class="form-label">Номер клубной карты</label>
+                <input type="text" class="form-control" id="club_card_number" name="club_card_number" placeholder="Введите номер клубной карты" required>
+            </div>
+
+            <!-- Поле: Список услуг -->
+            <div class="mb-3">
+                <label for="services_list" class="form-label">Список услуг</label>
+                <textarea class="form-control" id="services_list" name="services_list" rows="3" placeholder="Введите список услуг" required></textarea>
+            </div>
+
+            <!-- Поле: Метод оплаты -->
+            <div class="mb-3">
+                <label for="payment_method" class="form-label">Метод оплаты</label>
+                <input type="text" class="form-control" id="payment_method" name="payment_method" placeholder="Введите метод оплаты" required>
+            </div>
+
+            <!-- Поле: Статус договора -->
+            <div class="mb-3">
+                <label for="contract_status" class="form-label">Статус договора</label>
+                <input type="text" class="form-control" id="contract_status" name="contract_status" placeholder="Введите статус договора" required>
+            </div>
+
+            <!-- Поле: Дата начала предоставления услуг -->
+            <div class="mb-3">
+                <label for="service_start_date" class="form-label">Дата начала предоставления услуг</label>
+                <input type="date" class="form-control" id="service_start_date" name="service_start_date" required>
+            </div>
+
+            <!-- Поле: Дата окончания предоставления услуг -->
+            <div class="mb-3">
+                <label for="service_end_date" class="form-label">Дата окончания предоставления услуг</label>
+                <input type="date" class="form-control" id="service_end_date" name="service_end_date" required>
+            </div>
+
+            <!-- Поле: Тип клубной карты -->
+            <div class="mb-3">
+                <label for="club_card_type" class="form-label">Тип клубной карты</label>
+                <select class="form-select" id="club_card_type" name="club_card_type" required>
+                    <option value="">Выберите тип карты</option>
+                    <option value="Стандарт">Стандарт</option>
+                    <option value="Премиум">Премиум</option>
+                    <option value="VIP">VIP</option>
+                </select>
+            </div>
+
+            <!-- Поле: Сумма аванса -->
+            <div class="mb-3">
+                <label for="advance_amount" class="form-label">Сумма аванса</label>
+                <input type="number" class="form-control" id="advance_amount" name="advance_amount" placeholder="Введите сумму аванса" required>
+            </div>
+
+            <!-- Кнопка отправки формы -->
+            <button type="submit" class="btn btn-primary w-100">Сгенерировать договор</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

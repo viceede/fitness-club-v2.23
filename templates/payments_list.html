@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Список платежей{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Список платежей</h1>
+    <a href="/" class="btn btn-primary">На главную</a>
+    <a href="/payments/add" class="btn btn-success">Добавить платеж</a>
+</div>
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>ID клиента</th>
+            <th>Дата платежа</th>
+            <th>Сумма</th>
+            <th>Метод оплаты</th>
+            <th>Статус</th>
+            <th>Подробнее</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for payment in payments %}
+        <tr>
+            <td>{{ payment.payment_id }}</td>
+            <td>{{ payment.client_id }}</td>
+            <td>{{ payment.payment_date }}</td>
+            <td>{{ payment.amount }}</td>
+            <td>{{ payment.payment_method }}</td>
+            <td>{{ payment.status }}</td>
+            <td><a href="/payments/{{ payment.payment_id }}" class="btn btn-info">Открыть</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

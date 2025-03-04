@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Добавить менеджера{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Добавить менеджера</h1>
+
+    <!-- Сообщения об ошибке или успешном добавлении -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="alert alert-{{ messages[0][0] }} alert-dismissible fade show" role="alert">
+        {{ messages[0][1] }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <!-- Форма добавления менеджера -->
+    <form method="POST" class="needs-validation" novalidate>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="first_name" class="form-label">Имя</label>
+                <input type="text" name="first_name" id="first_name" class="form-control" required>
+                <div class="invalid-feedback">Пожалуйста, введите имя.</div>
+            </div>
+            <div class="col-md-6">
+                <label for="last_name" class="form-label">Фамилия</label>
+                <input type="text" name="last_name" id="last_name" class="form-control" required>
+                <div class="invalid-feedback">Пожалуйста, введите фамилию.</div>
+            </div>
+        </div>
+
+        <div class="row g-3 mt-3">
+            <div class="col-md-6">
+                <label for="position" class="form-label">Должность</label>
+                <input type="text" name="position" id="position" class="form-control" required>
+                <div class="invalid-feedback">Пожалуйста, укажите должность.</div>
+            </div>
+            <div class="col-md-6">
+                <label for="phone_number" class="form-label">Телефон</label>
+                <input type="text" name="phone_number" id="phone_number" class="form-control" required>
+                <div class="invalid-feedback">Пожалуйста, введите номер телефона.</div>
+            </div>
+        </div>
+
+        <div class="row g-3 mt-3">
+            <div class="col-md-12">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" id="email" class="form-control" required>
+                <div class="invalid-feedback">Пожалуйста, укажите корректный email.</div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-4">
+            <button type="submit" class="btn btn-success">Добавить менеджера</button>
+            <a href="/managers" class="btn btn-secondary">Отменить</a>
+        </div>
+    </form>
+</div>
+
+<!-- Скрипт валидации Bootstrap -->
+<script>
+    (function () {
+        'use strict';
+        const forms = document.querySelectorAll('.needs-validation');
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
+</script>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Карточка платежа{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-header bg-dark text-white">
+        <h2>Карточка платежа</h2>
+    </div>
+    <div class="card-body">
+        <p><strong>ID клиента:</strong> {{ payment.client_id }}</p>
+        <p><strong>Дата платежа:</strong> {{ payment.payment_date }}</p>
+        <p><strong>Сумма:</strong> {{ payment.amount }}</p>
+        <p><strong>Метод оплаты:</strong> {{ payment.payment_method }}</p>
+        <p><strong>Статус:</strong> {{ payment.status }}</p>
+    </div>
+    <div class="card-footer">
+        <a href="/payments" class="btn btn-secondary">Назад</a>
+    </div>
+</div>
+{% endblock %}

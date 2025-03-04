@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}Добавить документ{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Добавить документ</h1>
+
+    <!-- Сообщения об ошибке или успешном добавлении -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="alert alert-{{ messages[0][0] }} alert-dismissible fade show" role="alert">
+        {{ messages[0][1] }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <!-- Форма добавления документа -->
+    <form method="POST" class="needs-validation" novalidate>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="document_type" class="form-label">Тип документа</label>
+                <input type="text" name="document_type" id="document_type" class="form-control" required>
+                <div class="invalid-feedback">Пожалуйста, укажите тип документа.</div>
+            </div>
+            <div class="col-md-6">
+                <label for="creation_date" class="form-label">Дата создания</label>
+                <input type="date" name="creation_date" id="creation_date" class="form-control" required>
+                <div class="invalid-feedback">Пожалуйста, укажите дату создания.</div>
+            </div>
+        </div>
+
+        <div class="row g-3 mt-3">
+            <div class="col-md-6">
+                <label for="related_entity" class="form-label">Связанная сущность</label>
+                <input type="text" name="related_entity" id="related_entity" class="form-control" required>
+                <div class="invalid-feedback">Пожалуйста, укажите связанную сущность.</div>
+            </div>
+            <div class="col-md-6">
+                <label for="status" class="form-label">Статус</label>
+                <select name="status" id="status" class="form-select" required>
+                    <option value="" selected disabled>Выберите статус</option>
+                    <option value="in_progress">В процессе</option>
+                    <option value="completed">Завершен</option>
+                    <option value="signed">Подписан</option>
+                </select>
+                <div class="invalid-feedback">Пожалуйста, выберите статус документа.</div>
+            </div>
+        </div>
+
+        <div class="row g-3 mt-3">
+            <div class="col-md-12">
+                <label for="file_path" class="form-label">Путь к файлу</label>
+                <input type="text" name="file_path" id="file_path" class="form-control">
+                <div class="form-text">Укажите путь к файлу (если имеется).</div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-4">
+            <button type="submit" class="btn btn-success">Добавить документ</button>
+            <a href="/documents" class="btn btn-secondary">Отменить</a>
+        </div>
+    </form>
+</div>
+
+<!-- Скрипт валидации Bootstrap -->
+<script>
+    (function () {
+        'use strict';
+        const forms = document.querySelectorAll('.needs-validation');
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
+</script>
+{% endblock %}

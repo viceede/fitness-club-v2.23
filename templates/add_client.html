@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}Добавить клиента{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Добавить клиента</h1>
+
+    <!-- Сообщения об ошибке или успешном добавлении -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="alert alert-{{ messages[0][0] }} alert-dismissible fade show" role="alert">
+        {{ messages[0][1] }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <!-- Форма добавления клиента -->
+    <form method="POST" class="needs-validation" novalidate>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="first_name" class="form-label">Имя</label>
+                <input type="text" name="first_name" id="first_name" class="form-control" required>
+                <div class="invalid-feedback">Пожалуйста, введите имя.</div>
+            </div>
+            <div class="col-md-6">
+                <label for="last_name" class="form-label">Фамилия</label>
+                <input type="text" name="last_name" id="last_name" class="form-control" required>
+                <div class="invalid-feedback">Пожалуйста, введите фамилию.</div>
+            </div>
+        </div>
+
+        <div class="row g-3 mt-3">
+            <div class="col-md-6">
+                <label for="date_of_birth" class="form-label">Дата рождения</label>
+                <input type="date" name="date_of_birth" id="date_of_birth" class="form-control" required>
+                <div class="invalid-feedback">Пожалуйста, укажите дату рождения.</div>
+            </div>
+            <div class="col-md-6">
+                <label for="phone_number" class="form-label">Телефон</label>
+                <input type="text" name="phone_number" id="phone_number" class="form-control" required>
+                <div class="invalid-feedback">Пожалуйста, введите номер телефона.</div>
+            </div>
+        </div>
+
+        <div class="row g-3 mt-3">
+            <div class="col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" id="email" class="form-control" required>
+                <div class="invalid-feedback">Пожалуйста, укажите корректный email.</div>
+            </div>
+            <div class="col-md-6">
+                <label for="membership_type" class="form-label">Тип абонемента</label>
+                <select name="membership_type" id="membership_type" class="form-select" required>
+                    <option value="" selected disabled>Выберите тип абонемента</option>
+                    <option value="annual">Годовой</option>
+                    <option value="monthly">Месячный</option>
+                </select>
+                <div class="invalid-feedback">Пожалуйста, выберите тип абонемента.</div>
+            </div>
+        </div>
+
+        <div class="row g-3 mt-3">
+            <div class="col-md-6">
+                <label for="registration_date" class="form-label">Дата регистрации</label>
+                <input type="date" name="registration_date" id="registration_date" class="form-control" required>
+                <div class="invalid-feedback">Пожалуйста, укажите дату регистрации.</div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-4">
+            <button type="submit" class="btn btn-success">Добавить клиента</button>
+            <a href="/clients" class="btn btn-secondary">Отменить</a>
+        </div>
+    </form>
+</div>
+
+<!-- Скрипт валидации Bootstrap -->
+<script>
+    (function () {
+        'use strict';
+        const forms = document.querySelectorAll('.needs-validation');
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
+</script>
+{% endblock %}

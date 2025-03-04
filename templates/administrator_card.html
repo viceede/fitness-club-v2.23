@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Карточка администратора{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-header bg-dark text-white">
+        <h2>Карточка администратора</h2>
+    </div>
+    <div class="card-body">
+        <p><strong>Имя:</strong> {{ administrator.first_name }}</p>
+        <p><strong>Фамилия:</strong> {{ administrator.last_name }}</p>
+        <p><strong>Дата найма:</strong> {{ administrator.hire_date }}</p>
+        <p><strong>Телефон:</strong> {{ administrator.phone_number }}</p>
+        <p><strong>Email:</strong> {{ administrator.email }}</p>
+        <p><strong>График смен:</strong> {{ administrator.shift_schedule }}</p>
+    </div>
+    <div class="card-footer">
+        <a href="/administrators" class="btn btn-secondary">Назад</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Карточка клиента{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-header bg-dark text-white">
+        <h2>Карточка клиента</h2>
+    </div>
+    <div class="card-body">
+        <p><strong>Имя:</strong> {{ client.first_name }}</p>
+        <p><strong>Фамилия:</strong> {{ client.last_name }}</p>
+        <p><strong>Дата рождения:</strong> {{ client.date_of_birth }}</p>
+        <p><strong>Телефон:</strong> {{ client.phone_number }}</p>
+        <p><strong>Email:</strong> {{ client.email }}</p>
+        <p><strong>Тип абонемента:</strong> {{ client.membership_type }}</p>
+        <p><strong>Дата регистрации:</strong> {{ client.registration_date }}</p>
+        <p><strong>Статус:</strong> {{ client.status }}</p>
+    </div>
+    <div class="card-footer">
+        <a href="/clients" class="btn btn-secondary">Назад</a>
+        <a href="/generate_contract?contract_number={{ contract_number }}&contract_date={{ contract_date }}"
+   class="btn btn-success">
+    Скачать договор
+</a>
+    </div>
+</div>
+{% endblock %}

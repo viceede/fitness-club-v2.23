@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Список администраторов{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Список администраторов</h1>
+    <a href="/" class="btn btn-primary">На главную</a>
+    <a href="/administrators/add" class="btn btn-success">Добавить администратора</a>
+</div>
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Дата найма</th>
+            <th>Подробнее</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for admin in administrators %}
+        <tr>
+            <td>{{ admin.admin_id }}</td>
+            <td>{{ admin.first_name }}</td>
+            <td>{{ admin.last_name }}</td>
+            <td>{{ admin.hire_date }}</td>
+            <td><a href="/administrators/{{ admin.admin_id }}" class="btn btn-info">Открыть</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
